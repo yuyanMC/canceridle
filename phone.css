@@ -1,0 +1,62 @@
+body{
+    background-color: #101020;
+    color: white;
+    font-size: 3em;
+}
+.resourcebox{
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    padding: 0.5em;
+}
+#cancerbar div{
+    position: relative;
+    top: 0;
+}
+.resbox{
+    position: relative;
+    height: 1.5em;
+}
+.restag{
+    position: absolute;
+    bottom: 1.5px;
+    left: 1em;
+}
+.resnum{
+    position: absolute;
+    bottom: 1.5px;
+    right: 1em;
+}
+#savebox{
+    position: absolute;
+    bottom: 0.5em;
+}
+button{
+    background-color: #303060;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+button.selected{
+    filter: brightness(2) !important;
+    cursor: not-allowed;
+}
+button.warn{
+    background-color: #b0b000;
+}
+button[disabled]{
+    background-color: #404080;
+    color: #c0c0c0;
+    cursor: not-allowed;
+}
+.head{
+    font-size: 0.75em;
+}
+.buttons>div{
+    position: relative;
+}
