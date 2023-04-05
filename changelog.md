@@ -7,3 +7,6 @@
 ## b0.0.3-1
 ### Bug fix
 无法查看CHANGELOG
+## b0.0.3-2
+### Bug fix
+CHANGELOG按钮不明显
