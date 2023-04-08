@@ -75,7 +75,6 @@ button[disabled]{
     font-size: 0.75em;
 }
 #CL{
-    position: absolute;
-    right: 0px;
+    position: relative;
     color: #ffffff;
 }

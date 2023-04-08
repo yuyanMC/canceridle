@@ -1,4 +1,4 @@
-let version = "b0.0.3-2";
+let version = "b0.0.3-2-1";
 let player = new Object();
 
 player.variation = new Decimal(0);
