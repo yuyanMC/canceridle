@@ -86,7 +86,7 @@ function load(){
             $("#vesresbox").fadeIn(1000);
         }
         if(player.number.gte(2e9)){
-            $("#upgrades")
+            $("#upgrades").fadeIn(1000);
         }
         update();
     });
@@ -107,9 +107,20 @@ function load(){
             return;
         }
         player.up11 = true;
-        player.number = player.number.sub(20e6);
+        player.number = player.number.sub(20e9);
         $("#up11")[0].classList.add("finished");
         $("#up12").fadeIn(1000);
+    });
+    $("#up12").click(function (e) {
+        if(player.up12){
+            return;
+        }
+        if(player.number.lt(250e15)){
+            return;
+        }
+        player.up12 = true;
+        player.number = player.number.sub(250e15);
+        $("#up12")[0].classList.add("finished");
     });
     $("#reset").click(function (e) {
         $("#reset").hide();
@@ -173,6 +184,9 @@ function readSave(){
     if(player.glucose.eq(0) || player.vessel.gt(0)){
         $("#vesbox").show();
         $("#vesresbox").show();
+    }
+    if(player.number.gte(2e9)){
+        $("#upgrades").show();
     }
     if(player.up11){
         $("#up11")[0].classList.add("finished");

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+        <title>cag_loading</title>
+        <script src="./jquery.js"></script>
+        <script src="./decimal.js"></script>
+        <script src="./format.js"></script>
+        <link rel="stylesheet" href="./main.css">
+    </head>
+    <body>
+        <div class="head">
+            <span id="_cag_name">cag_loading</span><span> </span><span id="_cag_ver">?</span>
+            <a id="CL" href="https://github.com/Vincent-Du-Hello/canceridle/blob/main/changelog.md"><span>CHANGELOG</span></a>
+        </div>
+        <!--按钮部分-->
+        <div id="_cag_bar" class="bar">
+        </div>
+        <div id="settingsbar" class="tab" hidden>
+            <button id="save">保存到文本</button>
+            <button id="load">从文本加载</button>
+            <button id="reset">重置</button>
+            <button id="resetsure">确认？</button>
+            <button id="autosave" disabled>自动保存 0s</button>
+            <br/>
+            <button id="dev" class="warn">开发者模式</button>
+        </div>
+        <div id="cancerbar" class="tab">
+        </div>
+        <div id="upgradesbar" class="tab" style="display: none;">
+        </div>
+        <div class="resourcebox" hidden>
+        </div>
+        <script src="./cag.js"></script>
+        <script src="./beta_cag.js"></script>
+    </body>
+</html>
