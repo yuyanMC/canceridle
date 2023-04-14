@@ -1,0 +1,80 @@
+.resourcebox{
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    width: 20em;
+    height: auto;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    padding: 0.5em;
+}
+.resbox{
+    position: relative;
+    height: 1.5em;
+}
+.restag{
+    position: absolute;
+    bottom: 1.5px;
+    left: 1em;
+}
+.resnum{
+    position: absolute;
+    bottom: 1.5px;
+    right: 1em;
+}
+#savebox{
+    position: absolute;
+    bottom: 0.5em;
+}
+body{
+    background-color: #101020;
+    color: white;
+}
+button{
+    background-color: #303060;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+}
+button._cag_selected{
+    filter: brightness(2) !important;
+    cursor: not-allowed;
+}
+button.warn{
+    background-color: #b0b000;
+}
+button.finished{
+    background-color: #20c020;
+    cursor: not-allowed;
+}
+button[disabled]{
+    background-color: #404080;
+    color: #c0c0c0;
+    cursor: not-allowed;
+}
+.head{
+    font-size: 0.75em;
+}
+.buttons>div{
+    position: relative;
+}
+#upgradesbar{
+    display: grid;
+    margin-top: 2em;
+    grid-template-columns: 8em 8em 8em 8em 8em;
+    grid-template-rows: 8em 8em 8em;
+    gap: 0em;
+}
+#upgradesbar>div>button{
+    width: 8em;
+    height: 8em;
+}
+#upgradesbar>div>button>span{
+    font-size: 0.75em;
+}
+.cl{
+    position: relative;
+    color: #ffffff;
+}

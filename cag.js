@@ -12,20 +12,56 @@ class MultipleRegisterError extends Error{
 var ctn = false;
 var ticking = true;
 
-const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+function cagLog(obj){
+    console.log("[CAG] ", obj);
+}
 function reload_settings(){
-
+    $("#_cag_name").text(gameName);
+    $("#_cag_ver").text(version);
+    $("title").text(gameName+" "+version);
+    $("#_cag_cl").attr("href", changelogUrl);
 }
 function registerTab(tabId,tabName){
-    if(player.tabs.tabId != undefined){
+    cagLog(`Registering bar '${ tabId }'.`)
+    if(player.tabs[tabId] != undefined){
         throw MultipleRegisterError(`Tab ${ tabId } is already exists.`);
     }
     player.tabs[tabId] = new Object();
     player.tabs[tabId].name = tabName;
     let newTab = $("<button></button>");
     newTab.attr("id","_cag_bar_" + tabId);
-    newTab.text(tabName)
-    $("._cag_bar").append(newTab);
+    newTab.text(tabName);
+    $("#_cag_bar").append(newTab);
+    let newMain = $("<div></div>");
+    newMain.attr("id","_cag_main_" + tabId);
+    $("#_cag_main").append(newMain);
+    newTab.click(function (e,m=newMain,t=newTab) { 
+        $("#_cag_main>div").hide();
+        m.show();
+        $("#_cag_bar>._cag_selected").removeClass("_cag_selected");
+        t.addClass("_cag_selected");
+    });
+    cagLog(player.tabs[tabId]);
+    cagLog(newTab);
+    cagLog(newMain)
+    return player.tabs[tabId];
+}
+function registerResource(resourceId,resourceName,defaultValue){
+    cagLog(`Registering resource '${ resourceId }'.`)
+    if(player.resources[resourceId] != undefined){
+        throw MultipleRegisterError(`Resource ${ resourceId } is already exists.`);
+    }
+    player.resources[resourceId] = new Object();
+    player.resources[resourceId].name = resourceName;
+    player.resources[resourceId].value = defaultValue;
+    let newResourceItem = $("<div></div>");
+    newResourceItem.attr("id","_cag_resource_item_" + resourceId);
+    newResourceItem.addClass("resource_item")
+    $("#_cag_bar").append(newTab);
+    cagLog(player.resources[resourceId]);
+    cagLog(newResourceItem);
+    return player.resources[resourceId];
 }
 function tick(){
     player.vesselspeed = player.vesselspeed.sub(0.02);

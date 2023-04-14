@@ -9,30 +9,29 @@
         <script src="./jquery.js"></script>
         <script src="./decimal.js"></script>
         <script src="./format.js"></script>
-        <link rel="stylesheet" href="./main.css">
+        <link rel="stylesheet" href="./beta_cag.css">
     </head>
     <body>
-        <div class="head">
+        <div id="_cag_head" class="head">
             <span id="_cag_name">cag_loading</span><span> </span><span id="_cag_ver">?</span>
-            <a id="CL" href="https://github.com/Vincent-Du-Hello/canceridle/blob/main/changelog.md"><span>CHANGELOG</span></a>
+            <a id="_cag_cl" class="cl" href="javascript:alert('cag_loading');"><span>CHANGELOG</span></a>
         </div>
-        <!--按钮部分-->
         <div id="_cag_bar" class="bar">
+
         </div>
-        <div id="settingsbar" class="tab" hidden>
-            <button id="save">保存到文本</button>
-            <button id="load">从文本加载</button>
-            <button id="reset">重置</button>
-            <button id="resetsure">确认？</button>
-            <button id="autosave" disabled>自动保存 0s</button>
-            <br/>
-            <button id="dev" class="warn">开发者模式</button>
+        <div id="_cag_main" class="main">
+            <div id="_cag_main_config">
+                <button id="save">保存到文本</button>
+                <button id="load">从文本加载</button>
+                <button id="reset">重置</button>
+                <button id="resetsure">确认？</button>
+                <button id="autosave" disabled>自动保存 0s</button>
+                <br/>
+                <button id="dev" class="warn">开发者模式</button>
+            </div>
         </div>
-        <div id="cancerbar" class="tab">
-        </div>
-        <div id="upgradesbar" class="tab" style="display: none;">
-        </div>
-        <div class="resourcebox" hidden>
+        <div id="_cag_resource_box" class="resource_box">
+
         </div>
         <script src="./cag.js"></script>
         <script src="./beta_cag.js"></script>
