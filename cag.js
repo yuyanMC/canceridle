@@ -21,6 +21,7 @@ function reload_settings(){
     $("#_cag_ver").text(version);
     $("title").text(gameName+" "+version);
     $("#_cag_cl").attr("href", changelogUrl);
+    init();
 }
 function registerTab(tabId,tabName){
     cagLog(`Registering bar '${ tabId }'.`)
@@ -33,9 +34,15 @@ function registerTab(tabId,tabName){
     newTab.attr("id","_cag_bar_" + tabId);
     newTab.text(tabName);
     $("#_cag_bar").append(newTab);
-    let newMain = $("<div></div>");
-    newMain.attr("id","_cag_main_" + tabId);
-    $("#_cag_main").append(newMain);
+    let newMain = undefined
+    if($(`#_cag_main_${ tabId }`).length){
+        cagLog(`Loading tab ${ tabId } from HTML file.`);
+        newMain = $(`#_cag_main_${ tabId }`);
+    }else{
+        newMain = $("<div></div>");
+        newMain.attr("id","_cag_main_" + tabId);
+        $("#_cag_main").append(newMain);
+    }
     newTab.click(function (e,m=newMain,t=newTab) { 
         $("#_cag_main>div").hide();
         m.show();
@@ -47,8 +54,9 @@ function registerTab(tabId,tabName){
     cagLog(newMain)
     return player.tabs[tabId];
 }
-function registerResource(resourceId,resourceName,defaultValue){
+function registerResource(resourceId,resourceName,defaultValue = 0){
     cagLog(`Registering resource '${ resourceId }'.`)
+    defaultValue = Decimal(defaultValue);
     if(player.resources[resourceId] != undefined){
         throw MultipleRegisterError(`Resource ${ resourceId } is already exists.`);
     }
@@ -57,8 +65,18 @@ function registerResource(resourceId,resourceName,defaultValue){
     player.resources[resourceId].value = defaultValue;
     let newResourceItem = $("<div></div>");
     newResourceItem.attr("id","_cag_resource_item_" + resourceId);
-    newResourceItem.addClass("resource_item")
-    $("#_cag_bar").append(newTab);
+    newResourceItem.addClass("resource_item");
+    let newResourceName = $("<span></span>");
+    newResourceName.attr("id","_cag_resource_item_name_" + resourceId);
+    newResourceName.addClass("resource_name");
+    newResourceName.text(resourceName);
+    newResourceItem.append(newResourceName);
+    let newResourceValue = $("<span></span>");
+    newResourceValue.attr("id","_cag_resource_item_value_" + resourceId);
+    newResourceValue.addClass("resource_value");
+    newResourceValue.text(shorten(defaultValue));
+    newResourceItem.append(newResourceValue);
+    $("#_cag_resource_box").append(newResourceItem);
     cagLog(player.resources[resourceId]);
     cagLog(newResourceItem);
     return player.resources[resourceId];
@@ -80,13 +98,13 @@ function tick(){
     }
 }
 function writeSave(){
-    localStorage["cancer"] = JSON.stringify(player);
+    localStorage[gameId] = JSON.stringify(player);
 }
 function readSave(){
-    if(!localStorage["cancer"]){
+    if(!localStorage[gameId]){
         return;
     }
-    player = JSON.parse(localStorage["cancer"]);
+    player = JSON.parse(localStorage[gameId]);
     for(key in player){
         if(typeof player[key] === 'string'){
             player[key] = new Decimal(player[key]);
@@ -105,7 +123,7 @@ async function autoSave(){
 }
 async function saveToClipboard(){
     try {
-        await navigator.clipboard.writeText(localStorage["cancer"]);
+        await navigator.clipboard.writeText(localStorage[gameId]);
         alert("已保存到剪贴板");
     } catch (err) {
         alert("保存失败");

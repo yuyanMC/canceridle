@@ -1,4 +1,4 @@
-.resourcebox{
+.resource_box{
     position: absolute;
     right: 1em;
     top: 1em;
@@ -9,16 +9,16 @@
     border-color: white;
     padding: 0.5em;
 }
-.resbox{
+.resource_item{
     position: relative;
     height: 1.5em;
 }
-.restag{
+.resource_name{
     position: absolute;
     bottom: 1.5px;
     left: 1em;
 }
-.resnum{
+.resource_value{
     position: absolute;
     bottom: 1.5px;
     right: 1em;
